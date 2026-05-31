@@ -6,7 +6,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export async function POST() {
+export async function GET() {
   const sampleLeads = [
     {
       org_name: "Sample Christian Podcast",
@@ -33,5 +33,8 @@ export async function POST() {
     return NextResponse.json({ error }, { status: 500 });
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({
+    success: true,
+    inserted: data
+  });
 }
